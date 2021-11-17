@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'main',
+    'vendors',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +62,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'templates'
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +85,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'brewtiful_sandiego',
     }
 }
 
@@ -140,3 +145,9 @@ RECAPTCHA_SECRET_KEY = str(os.getenv('RECAPTCHA_SECRET_KEY'))
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "vendors:sign-in"
+LOGIN_REDIRECT_URL = "vendors:account"
+LOGOUT_REDIRECT_URL = "vendors:sign-in"
+
+BASE_COUNTRY = "US"

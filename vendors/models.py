@@ -27,4 +27,4 @@ class VendorProfile(models.Model):
 	  return f'{self.user}'
  
   class Meta:
-    ordering = ['company_name', '-created_at']
+    ordering = ['name', '-created_at']

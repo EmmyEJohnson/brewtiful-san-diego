@@ -29,7 +29,7 @@ message = "There was an error, please try again"
 
 class AccountView(TemplateView):
 
-	template_name = "users/account.html"
+	template_name = "vendors/account.html"
 
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):

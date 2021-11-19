@@ -15,7 +15,8 @@ body, html, .map-container {
   }
 
 .logo {
-  width: 150px;
+  width: 550px;
+  height: 300px;
   padding: 8px;
 }
 
@@ -311,4 +312,24 @@ input, select,
 input:hover,
 .btn:hover {
   opacity: 1;
+}
+
+.profile-userinfo-headers {
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw;
+  margin-bottom: 0.2vw;
+  color: black;
+}
+
+.profile-edit-button {
+  width: 86%;
+  background-color: var(--salmon);
+  color: var(--black);
+  margin: 1.5vw auto 0 auto;
+  line-height: 3vw;
+  font-size: 0.9vw;
+  font-family: var(--montserrat);
+  padding: 4px 8px 4px 8px;
+  letter-spacing: 8px;
+  transition: 0.25s ease-in-out;
 }

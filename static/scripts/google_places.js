@@ -36,7 +36,7 @@ function onPlaceChanged (){
     }); 
 
     if (!place.geometry){
-        document.getElementById('id-google-address').placeholder = "*Begin typing address";
+        document.getElementById('id-google-address').placeholder = "Begin typing address";
     }
     else{
         
@@ -49,18 +49,17 @@ function onPlaceChanged (){
                 if (place.address_components[i].types[j] == "route") {
                     var addy = place.address_components[i].long_name
                 }
-                if (place.address_components[i].types[j] == "postal_town") {
-                     $('#id_town').val(place.address_components[i].long_name)   
-                }                    
-                if (place.address_components[i].types[j] == "administrative_area_level_2") {
-                    $('#id_county').val(place.address_components[i].long_name)   
+                if (place.address_components[i].types[j] == "locality") {
+                     $('#id_locality').val(place.address_components[i].long_name)   
+                }                  
+                if (place.address_components[i].types[j] == "administrative_area_level_1") {
+                    $('#id_state').val(place.address_components[i].long_name)   
+                }
+                if (place.address_components[i].types[j] == "postal_code") {
+                    $('#id_postal_code').val(place.address_components[i].long_name)   
                 }
                 if (place.address_components[i].types[j] == "country") {
                     $('#id_country').val(place.address_components[i].long_name)   
-                }
-
-                if (place.address_components[i].types[j] == "postal_code") {
-                    $('#id_post_code').val(place.address_components[i].long_name)   
                 }
             }
         }

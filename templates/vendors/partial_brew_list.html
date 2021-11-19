@@ -1,0 +1,30 @@
+      {% for brew in brew_list %}
+        <tr>
+          <td>{{ brew.id }}</td>
+          <td>{{ brew.name }}</td>
+          <td>{{ brew.brew_type }}</td>
+          <td>{{ brew.brewery }}</td>
+          <td>{{ brew.description }}</td>
+          <td>{{ brew.price }}</td>
+          <td>{{ brew.image }}</td>
+          <td>
+            <button type="button"
+              class="btn btn-warning btn-sm js-update-brew"
+              data-url="{% url 'vendors/brew_update' brew.id %}">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+            </button>
+            <button type="button"
+              class="btn btn-danger btn-sm js-delete-brew"
+              data-url="{% url 'vendors/brew_delete' brew.id %}">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+          </td>
+      </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No brew</td>
+  </tr>
+{% endfor %}
+
+
+        

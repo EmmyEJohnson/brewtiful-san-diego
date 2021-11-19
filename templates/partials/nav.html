@@ -13,9 +13,9 @@
   {% endif %}
 
   {% if "route" in request.path %}
-  <li><a class="active" href="{% url 'main:route' %}">Route</a></li>
+  <li><a class="active" href="{% url 'main:route' %}">Directions</a></li>
   {% else %}
-  <li><a href="{% url 'main:route' %}">Route</a></li>
+  <li><a href="{% url 'main:route' %}">Directions</a></li>
   {% endif %}
 
   {% if "map" in request.path %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="form-body">
+  <main class="form-signin">
+    <form class="modal-form" method="post">
+      
+      <h1 class="modal-title h3 mb-3 fw-normal">Update Profile</h1>
+<div class="container-head">
+  <a href="{% url 'vendors:profile_picture_update' %}">
+    {% if request.user.vendorprofile.has_profile %}
+    <p class="profile-header-image-container">{{request.user.vendorprofile.image}}</p>
+      <label for="id-image">Add/Change Company Logo Image</label>
+    {% else %}
+    {% endif %}
+    </a>
+
+
+          <p class="profile-image-headers">{{request.user.vendorprofile.image|title}}</p>
+            <td> Name: </td>
+            <td class="profile-userinfo-headers">{{request.user.vendorprofile.company_name|title}}</td>   
+            </tr><br>
+            <p class="profile-userinfo-headers">Joined: <span class="profile-userinfo">{{ request.user.vendorprofile.created_at|date:"M Y" }}</span></p>
+            <br><br>
+            <a class="profile-edit-button-link" href="{% url 'vendors:edit_profile' %}">
+            </a>
+            
+</div>
+      {% csrf_token %} {{ form.as_p }}
+
+      <input type="submit" class="form-button" value="UPDATE" />
+    </form>
+  </main>
+</div>
+{% endblock %}

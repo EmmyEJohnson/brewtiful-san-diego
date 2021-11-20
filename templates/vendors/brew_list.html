@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'scripts/brews.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  <h1 class="page-header">Brew-skies</h1>
+
+  <p>
+    <button type="button"
+            class="btn btn-primary js-create-brew"
+            data-url="{% url 'vendors/brew_create' %}">
+      <span class="glyphicon glyphicon-plus"></span>
+      New Brews
+    </button>
+  </p>
+
+  <table class="table" id="brew-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Brewery</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% include 'includes/partial_brew_list.html' %}
+    </tbody>
+  </table>
+
+    <div class="modal fade" id="modal-brew">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+{% endblock %}

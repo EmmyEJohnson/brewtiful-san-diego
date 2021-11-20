@@ -9,10 +9,33 @@
 
 {% block content %}
 
-<h3>Django Google API Course - User Profile</h3>
+<h3>Company Profile</h3>
+
+
+<div class="container-head">
+  <a href="{% url 'vendors:profile_picture_update' %}">
+    {% if request.user.vendorprofile.has_profile %}
+    <p class="profile-header-image-container">{{request.user.vendorprofile.image}}</p>
+      <label for="id-image">Add/Change Company Logo Image</label>
+    {% else %}
+    {% endif %}
+    </a>
+
+
+          <p class="profile-image-headers">{{request.user.vendorprofile.image|title}}</p>
+            <td> Name: </td>
+            <td class="profile-userinfo-headers">{{request.user.vendorprofile.name|title}}</td>   
+            </tr><br>
+            <p class="profile-userinfo-headers">Joined: <span class="profile-userinfo">{{ request.user.vendorprofile.created_at|date:"M Y" }}</span></p>
+            <br><br>
+            <a class="profile-edit-button-link" href="{% url 'vendors:edit_profile' %}">
+                <button type="submit" id="head-profile-btn">Edit</button>
+            </a>
+            
+</div> 
 
 <div class="container">
-  {% if request.user.userprofile.has_profile %}
+  {% if request.user.vendorprofile.has_profile %}
   <table>
     <thead>
       <tr>
@@ -25,10 +48,10 @@
         <td>Address</td>
         <td>
           <address>
-            {{request.user.userprofile.address}}<br>
-            {{request.user.userprofile.town}}<br>
-            {{request.user.userprofile.county}}<br>
-            {{request.user.userprofile.post_code}}<br>
+            {{request.user.vendorprofile.address}}<br>
+            {{request.user.vendorprofile.locality}}<br>
+            {{request.user.vendorprofile.state}}<br>
+            {{request.user.vendorprofile.postal_code}}<br>
           </address>
         </td>      
       </tr>
@@ -48,14 +71,14 @@
    <label for="address" class="hidden-el" hidden>Address</label>
    {{form.address}}
 
-   <label for="town" class="hidden-el" hidden>Town/City</label>
-   {{form.town}}
+   <label for="locality" class="hidden-el" hidden>City</label>
+   {{form.locality}}
 
-   <label for="county" class="hidden-el" hidden>County</label>
-   {{form.county}}
+   <label for="state" class="hidden-el" hidden>State</label>
+   {{form.state}}
 
-   <label for="post_code" class="hidden-el" hidden>Zip Code</label>
-   {{form.post_code}}
+   <label for="postal_code" class="hidden-el" hidden>Zip Code</label>
+   {{form.postal_code}}
 
    <label for="country" class="hidden-el" hidden>Country</label>
    {{form.country}}
@@ -84,6 +107,5 @@
 </script>
 
 <script src="{% static 'scripts/google_places.js' %}"></script>
-
 
 {% endblock %}

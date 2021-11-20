@@ -15,7 +15,8 @@ body, html, .map-container {
   }
 
 .logo {
-  width: 150px;
+  width: 550px;
+  height: 300px;
   padding: 8px;
 }
 
@@ -39,7 +40,7 @@ ul.sidenav li a {
 }
 
 ul.sidenav li a.active {
-  background-color: #9c07b6;
+  background-color: #02917e;
   color: white;
 }
 
@@ -90,27 +91,27 @@ input[type=text], input[type=email], input[type=password], select, textarea {
 
 
 ::-webkit-input-placeholder { /* Edge */
-  color: #9c07b6;
+  color: #02917e;
   font-family: 'Courier Prime', monospace;
 }
 
 :-ms-input-placeholder { /* Internet Explorer */
-  color: #9c07b6;
+  color: #02917e;
   font-family: 'Courier Prime', monospace;
 }
 
 ::placeholder {
-  color: #9c07b6;
+  color: #02917e;
   font-family: 'Courier Prime', monospace;
 }
 
 select.selection option {
-  color: #9c07b6;
+  color: #02917e;
   font-family: 'Courier Prime', monospace;
 }
 
 input, select{
-  color: #9c07b6;
+  color: #02917e;
   font-family: 'Courier Prime', monospace;
 
 }
@@ -154,7 +155,7 @@ input, select{
 
 /* When the checkbox is checked, add a green background */
 .check-container input:checked ~ .checkmark {
-  background-color: #9c07b6;
+  background-color: #02917e;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -222,11 +223,11 @@ input, select{
 }
 
 input:checked + .slider {
-  background-color: #9c07b6;
+  background-color: #02917e;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #9c07b6;
+  box-shadow: 0 0 1px #02917e;
 }
 
 input:checked + .slider:before {
@@ -245,7 +246,7 @@ input:checked + .slider:before {
 }
 
 button[type=submit] {
-  background-color: #9c07b6;
+  background-color: #02917e;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -254,7 +255,7 @@ button[type=submit] {
 }
 
 button[type=submit]:hover {
-  background-color: #730786;
+  background-color: #02917e;
 }
 
 .container {
@@ -280,12 +281,12 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #9c07b6;
+  background-color: #02917e;
   color: white;
 }
 
 .selected {
-  background-color: #730786;
+  background-color: #02917e;
   color: #FFF;
 }
 
@@ -311,4 +312,24 @@ input, select,
 input:hover,
 .btn:hover {
   opacity: 1;
+}
+
+.profile-userinfo-headers {
+  font-family: "Poppins", sans-serif;
+  font-size: 1vw;
+  margin-bottom: 0.2vw;
+  color: black;
+}
+
+.profile-edit-button {
+  width: 86%;
+  background-color: var(--salmon);
+  color: var(--black);
+  margin: 1.5vw auto 0 auto;
+  line-height: 3vw;
+  font-size: 0.9vw;
+  font-family: var(--montserrat);
+  padding: 4px 8px 4px 8px;
+  letter-spacing: 8px;
+  transition: 0.25s ease-in-out;
 }

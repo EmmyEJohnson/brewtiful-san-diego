@@ -17,6 +17,8 @@ python-dotenv = "*"
 requests = "*"
 humanfriendly = "*"
 pillow = "*"
+django-jquery = "*"
+django-widget-tweaks = "*"
 
 [dev-packages]
 

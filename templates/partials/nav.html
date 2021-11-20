@@ -13,9 +13,9 @@
   {% endif %}
 
   {% if "route" in request.path %}
-  <li><a class="active" href="{% url 'main:route' %}">Route</a></li>
+  <li><a class="active" href="{% url 'main:route' %}">Directions</a></li>
   {% else %}
-  <li><a href="{% url 'main:route' %}">Route</a></li>
+  <li><a href="{% url 'main:route' %}">Directions</a></li>
   {% endif %}
 
   {% if "map" in request.path %}
@@ -24,26 +24,26 @@
   <li><a href="{% url 'main:map' %}">Map</a></li>
   {% endif %}
 
-  {% if "sign-out" in request.path %}
-  <li><a class="active" href="{% url 'vendors:sign-out' %}">Sign Out</a></li>
+  {% if "sign_out" in request.path %}
+  <li><a class="active" href="{% url 'vendors:sign_out' %}">Sign Out</a></li>
   {% else %}
-  <li><a href="{% url 'vendors:sign-out' %}">Sign Out</a></li>
+  <li><a href="{% url 'vendors:sign_out' %}">Sign Out</a></li>
   {% endif %}
   
 </ul>
 {% else %}
 <ul class="sidenav">
 
-  {% if "sign-in" in request.path %}
-  <li><a class="active" href="{% url 'vendors:sign-in' %}">Sign In</a></li>
+  {% if "sign_in" in request.path %}
+  <li><a class="active" href="{% url 'vendors:sign_in' %}">Sign In</a></li>
   {% else %}
-  <li><a href="{% url 'vendors:sign-in' %}">Sign In</a></li>
+  <li><a href="{% url 'vendors:sign_in' %}">Sign In</a></li>
   {% endif %}
   
-  {% if "sign-up" in request.path %}
-  <li><a class="active" href="{% url 'vendors:sign-up' %}">Sign Up</a></li>
+  {% if "sign_up" in request.path %}
+  <li><a class="active" href="{% url 'vendors:sign_up' %}">Sign Up</a></li>
   {% else %}
-  <li><a href="{% url 'vendors:sign-up' %}">Sign Up</a></li>
+  <li><a href="{% url 'vendors:sign_up' %}">Sign Up</a></li>
   {% endif %}
 </ul>
 {% endif %}

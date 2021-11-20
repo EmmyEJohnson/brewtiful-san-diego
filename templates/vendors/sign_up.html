@@ -15,14 +15,14 @@
 <div class="container">
 
 
-  <form id="signupform" method="POST" action="/sign-up">
+  <form id="signupform" method="POST" action="/sign_up">
     {% csrf_token %}
 
     
     <label for="first_name">Name of Company</label>
     {{form.first_name}}
 
-    <label for="last_name"></label>
+    <label for="last_name">Additional Information...</label>
     {{form.last_name}}
 
     <label for="username">Username</label>

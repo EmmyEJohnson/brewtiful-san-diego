@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+
+<div class="form-body">
+  <main class="form-image-update" style="max-width: 600px;">
+    <form class="modal-form" style="max-width: 600px;" action="" method="post" enctype="multipart/form-data">
+      <h1>Update Company Logo/ Image</h1>
+      
+      {% csrf_token %} {{form.as_p}}
+
+      <input type="submit" class="form-button" value="UPLOAD" />
+    </form>
+  </main>
+</div>
+{% endblock %}

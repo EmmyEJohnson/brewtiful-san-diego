@@ -17,7 +17,7 @@
 
           <p class="profile-image-headers">{{request.user.vendorprofile.image|title}}</p>
             <td> Name: </td>
-            <td class="profile-userinfo-headers">{{request.user.vendorprofile.company_name|title}}</td>   
+            <td class="profile-userinfo-headers">{{request.user.vendorprofile.name|title}}</td>   
             </tr><br>
             <p class="profile-userinfo-headers">Joined: <span class="profile-userinfo">{{ request.user.vendorprofile.created_at|date:"M Y" }}</span></p>
             <br><br>

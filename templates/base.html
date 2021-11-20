@@ -10,10 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'styles/main.css' %}"></link>
 
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <script defer src="{% static 'fontawesome/js/all.min.js' %}"></script>
-
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- https://cdnjs.com/libraries/toastr.js/latest -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -37,7 +33,7 @@
 
     {% block content %}
 
-    {% endblock %} 
+    {% endblock %}
 
   </div>
 
@@ -47,21 +43,13 @@
   <!-- https://cdnjs.com/libraries/toastr.js/latest -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- This allows us to extend the foot scripts in HTML docs that have special requirements-->
+ 
   {% block extend_footer %}
 
   {% endblock %}
 
   <script src="{% static 'scripts/main.js' %}"></script>
-    {% comment %} {% include 'includes/header.html' %} {% endcomment %}
-    <div class="container">
-      {% comment %} {% block content %}
-      {% endblock %} {% endcomment %}
-    </div
-  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>  <!-- JQUERY HERE -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% block javascript %}
-    {% endblock %}
+  
 
 </body>
 </html>

@@ -68,16 +68,47 @@ def profile_view(request):
 
 		return render(request, 'vendors/profile.html', context)
 
-class EditProfile(UpdateView):
-    model = User
-    form_class = EditProfileForm
-    template_name = "vendors/edit_profile.html"
-    
-    def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.object.pk})
-    
+# def edit_profile(request):
+#     args = {}
+
+#     if request.method == 'POST':
+#         form = EditProfileForm(request.POST)
+#         form.actual_user = request.user
+#         if form.is_valid():
+#             obj=form.save()
+#             return reverse('edit_profile')
+#     else:
+#         form = EditProfileForm()
+
+#     args['form'] = form
+#     return render(request, 'vendors/edit_profile.html', args)
   
-        
+# # #Save
+def save_vendorprofile_form(request, form, template_name):
+    data = dict()
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+            form = VendorProfile.objects.all()
+            data['html_profile'] = render_to_string('vendors/profile.html', {
+                'form': form
+            })
+        else:
+            data['form_is_valid'] = False
+    context = {'form': form}
+    data['html_form'] = render_to_string(template_name, context, request=request)
+    return JsonResponse(data) 
+  
+def edit_profile(request, pk):
+    vendorprofile = get_object_or_404(VendorProfile, pk=pk)
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=vendorprofile)
+    else:
+        form = EditProfileForm(instance=vendorprofile)
+    return save_vendorprofile_form(request, form, 'vendors/edit_profile.html')
+    
+      
 def profile_picture_update(request):
     if request.method == 'POST':
        form = ProfileImageForm(request.POST, request.FILES)
@@ -99,7 +130,7 @@ class SignUpView(AjaxFormMixin, FormView):
 	#reCAPTURE key required in context
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context["recaptcha_site_key"] = settings.RECAPTCHA_PUBLIC_KEY
+		context["recaptcha_site_key"] = settings.RECAPTCHA_SITE_KEY
 		return context
 
 	#over write the mixin logic to get, check and save reCAPTURE score
@@ -154,9 +185,7 @@ class SignInView(AjaxFormMixin, FormView):
 			return JsonResponse(data)
 		return response
 
-
-
-
+# Sign Out View
 def sign_out(request):
 
 	logout(request)
@@ -165,10 +194,9 @@ def sign_out(request):
 
 
 # Brew views
-
 def brew_list(request):
     brews = Brew.objects.all()
-    return render(request, 'brews/brew_list.html', {'brews': brews})
+    return render(request, 'brew_list.html', {'brews': brews})
 
 def save_brew_form(request, form, template_name):
     data = dict()
@@ -177,7 +205,7 @@ def save_brew_form(request, form, template_name):
             form.save()
             data['form_is_valid'] = True
             brews = Brew.objects.all()
-            data['html_brew_list'] = render_to_string('brews/includes/partial_brew_list.html', {
+            data['html_brew_list'] = render_to_string('includes/partial_brew_list.html', {
                 'brews': brews
             })
         else:
@@ -195,7 +223,7 @@ def brew_create(request):
             form.save()
             data['form_is_valid'] = True
             brews = Brew.objects.all()
-            data['html_brew_list'] = render_to_string('brews/includes/partial_brew_list.html', {
+            data['html_brew_list'] = render_to_string('includes/partial_brew_list.html', {
                 'brews': brews
             })
         else:
@@ -204,7 +232,7 @@ def brew_create(request):
         form = BrewForm()
 
     context = {'form': form}
-    data['html_form'] = render_to_string('brews/includes/partial_brew_create.html',
+    data['html_form'] = render_to_string('includes/partial_brew_create.html',
         context,
         request=request
     )
@@ -217,7 +245,7 @@ def brew_update(request, pk):
         form = BrewForm(request.POST, instance=brew)
     else:
         form = BrewForm(instance=brew)
-    return save_brew_form(request, form, 'brews/includes/partial_brew_update.html')
+    return save_brew_form(request, form, 'includes/partial_brew_update.html')
   
   
 def brew_delete(request, pk):
@@ -227,12 +255,12 @@ def brew_delete(request, pk):
         brew.delete()
         data['form_is_valid'] = True  # This is just to play along with the existing code
         brews = Brew.objects.all()
-        data['html_brew_list'] = render_to_string('brews/includes/partial_brew_list.html', {
+        data['html_brew_list'] = render_to_string('includes/partial_brew_list.html', {
             'brews': brews
         })
     else:
         context = {'brew': brew}
-        data['html_form'] = render_to_string('brews/includes/partial_brew_delete.html',
+        data['html_form'] = render_to_string('includes/partial_brew_delete.html',
             context,
             request=request,
         )

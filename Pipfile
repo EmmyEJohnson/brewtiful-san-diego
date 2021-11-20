@@ -18,7 +18,6 @@ requests = "*"
 humanfriendly = "*"
 pillow = "*"
 django-jquery = "*"
-django-bootstrap-static = "*"
 django-widget-tweaks = "*"
 
 [dev-packages]

@@ -13,11 +13,11 @@ class UserForm(UserCreationForm):
 	last_name = forms.CharField(max_length=30, required=False,
 		widget=forms.TextInput(attrs={'placeholder': 'Additional information... (ex. "Slogan")'}))
 	username = forms.EmailField(max_length=254, required=True,
-		widget=forms.TextInput(attrs={'placeholder': 'Email..'}))
+		widget=forms.TextInput(attrs={'placeholder': 'Email..', 'autocomplete': 'username'}))
 	password1 = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': 'Password..','class':'password'}))
+		widget=forms.PasswordInput(attrs={'placeholder': 'Password..','class':'password', 'autocomplete': 'current-password'}))
 	password2 = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password..','class':'password'}))
+		widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password..','class':'password', 'autocomplete': 'current-password'}))
 
 	#reCAPTCHA token
 	token = forms.CharField(
@@ -31,9 +31,9 @@ class UserForm(UserCreationForm):
 class AuthForm(AuthenticationForm):
 
 	username = forms.EmailField(max_length=254, required=True,
-		widget=forms.TextInput(attrs={'placeholder': 'Email..'}))
+		widget=forms.TextInput(attrs={'placeholder': 'Email..', 'autocomplete': 'username'}))
 	password = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': 'Password..','class':'password'}))
+		widget=forms.PasswordInput(attrs={'placeholder': 'Password..','class':'password', 'autocomplete': 'current-password'}))
 
 	class Meta:
 		model = User
@@ -50,23 +50,25 @@ class UserProfileForm(forms.ModelForm):
 	longitude = forms.CharField(max_length=50, required=True, widget = forms.HiddenInput())
 	latitude = forms.CharField(max_length=50, required=True, widget = forms.HiddenInput())
 
-
 	class Meta:
 		model = VendorProfile
 		fields = ('address', 'locality', 'state', 'postal_code',
 		 'country', 'longitude', 'latitude')
 
-class EditProfileForm(ModelForm):
-    
-    class Meta:
-        model = VendorProfile
-        fields = ('company_name',)
+
+class EditProfileForm(forms.ModelForm):
+  
+		class Meta:
+				model = VendorProfile
+				fields = ('name',)
+
 
 class ProfileImageForm(ModelForm):
 
     class Meta:
         model = VendorProfile
         fields = ('image',)
+
 
 class BrewForm(forms.ModelForm):
     class Meta:

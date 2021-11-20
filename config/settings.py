@@ -130,17 +130,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    
 ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 GOOGLE_API_KEY = str(os.getenv('GOOGLE_API_KEY'))
 
-RECAPTCHA_KEY = str(os.getenv('RECAPTCHA_KEY'))
+RECAPTCHA_SITE_KEY = str(os.getenv('RECAPTCHA_SITE_KEY'))
 
 RECAPTCHA_SECRET_KEY = str(os.getenv('RECAPTCHA_SECRET_KEY'))
 
@@ -149,8 +150,8 @@ RECAPTCHA_SECRET_KEY = str(os.getenv('RECAPTCHA_SECRET_KEY'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = "vendors:sign-in"
+LOGIN_URL = "vendors:sign_in"
 LOGIN_REDIRECT_URL = "vendors:account"
-LOGOUT_REDIRECT_URL = "vendors:sign-in"
+LOGOUT_REDIRECT_URL = "vendors:sign_in"
 
 BASE_COUNTRY = "US"

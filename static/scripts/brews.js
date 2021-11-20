@@ -9,6 +9,7 @@ $(function () {
       type: 'get',
       dataType: 'json',
       beforeSend: function () {
+        $("#modal-brew .modal-content").html("");
         $("#modal-brew").modal("show");
       },
       success: function (data) {
@@ -50,6 +51,6 @@ $(function () {
 
   // Delete brew
   $("#brew-table").on("click", ".js-delete-brew", loadForm);
-  $("#modal-brew").on("submit", ".js-brew-delete-form", saveForm)
+  $("#modal-brew").on("submit", ".js-brew-delete-form", saveForm);
 
 });
